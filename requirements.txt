@@ -1,4 +1,6 @@
 flask
+flask-admin
+flask-markdown
 flask-security
 flask-sqlalchemy
 flask-wtf

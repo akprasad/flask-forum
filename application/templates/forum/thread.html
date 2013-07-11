@@ -4,6 +4,6 @@
 
 {% for p in posts %}
 <article>
-    {{ p.content }}
+    {{ p.content|markdown }}
 </article>
 {% endfor %}

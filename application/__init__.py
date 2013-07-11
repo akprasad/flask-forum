@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask.ext.markdown import Markdown
 from flask.ext.security import Security, SQLAlchemyUserDatastore
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -14,6 +15,10 @@ import models
 
 # Admin
 import admin
+
+
+# Markdown
+Markdown(app, safe_mode='escape')
 
 
 # Security
