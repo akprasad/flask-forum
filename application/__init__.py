@@ -39,7 +39,7 @@ security = Security(app, datastore)
 # Endpoints
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', User=models.User)
 
 
 import forum.views as forum

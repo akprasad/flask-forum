@@ -1,10 +1,39 @@
 {% extends 'layout.html' %}
 
+{# shorthand #}
+{% set u = current_user %}
+{% set auth = u.is_authenticated() %}
+
 {% block title %}flask-forum{% endblock %}
 
 {% block body %}
 <h1>flask-forum</h1>
 
-<a href="{{ url_for('admin.index') }}">Admin panel</a>
-<a href="{{ url_for('forum.index') }}">Forum index</a>
+
+<h2>Authentication [<a href="{{ url_for('security.login') }}">log in</a>, <a href="{{ url_for('security.logout') }}">log out</a>, <a href="{{ url_for('security.register') }}">register</a>]</h2>
+{% if auth %}(logged in as <i>{{ u.email }}</i>){% endif %}
+<p>Powered by Flask-Security. Flask-Security automatically creates several endpoints, including <code>security.login</code> (<code>/login</code>), <code>security.logout</code> (<code>/logout</code>), and <code>security.register</code> (<code>/register</code>).</p>
+
+
+<h2><a href="{{ url_for('admin.index') }}">Admin stuff</a></h2>
+{% if auth %}
+    {% if u.has_role('admin') %}
+        You have admin privileges.
+    {% else %}
+        <p>The account you're using (<code>{{ u.email }}</code>) does not have admin privileges. You can give yourself admin privileges by running the following command on the terminal:</p>
+
+        <pre>
+        python manage.py create_role -n admin
+        python manage.py add_role -u {{ u.email }} -r admin
+        </pre>
+    {% endif %}
+{% else %}
+    <a href="{{ url_for('security.login') }}">Log in</a> to access the admin panel.
+{% endif %}
+
+
+<h2><a href="{{ url_for('forum.index') }}">The forum</a></h2>
+
+<p>A basic forum. There are multiple <dfn>boards</dfn>, each board has multiple <dfn>threads</dfn>, and each thread has multiple <dfn>posts</dfn>. Users can create threads and posts, but only administrators can create boards. You can do this through the admin panel.</p>
+
 {% endblock %}

@@ -9,6 +9,7 @@ ASSETS_DEST = 'application/static'
 # --------------
 SECURITY_PASSWORD_HASH = 'bcrypt'
 SECURITY_PASSWORD_SALT = '$2a$10$WyxRXkzAICMHgmqhMGTlJu'
+SECURITY_CONFIRMABLE = False
 SECURITY_REGISTERABLE = True
 
 # flask-sqlalchemy
