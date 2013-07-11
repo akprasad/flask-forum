@@ -90,6 +90,7 @@ def create_post(slug, id):
         p = Post(content=form.content.data,
                  author=current_user)
         thread.posts.append(p)
+        thread.last_updated = p.created
         db.session.commit()
 
         return redirect(url_for('.thread', slug=slug, id=id))

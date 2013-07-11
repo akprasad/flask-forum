@@ -1,16 +1,26 @@
 {% extends 'forum/layout.html' %}
 
+{# #}
+{% macro thread_row(t) %}
+    <tr>
+        <td><a href="{{ url_for('.thread', slug=board.slug, id=t.id) }}">{{ t.name }}</a></td>
+        <td>{{ t.num_posts }}</td>
+        <td>{{ t.readable_date }}</td>
+    </tr>
+{% endmacro %}
+
 {% block title %}{{ board.name }}{% endblock %}
 
 {% block body %}
 <h1>{{ board.name }}</h1>
 
 <a href="{{ url_for('.create_thread', slug=board.slug) }}">Create thread</a>
-{% if threads %}
-    <ul>
-    {% for t in threads %}
-        <li><a href="{{ url_for('.thread', slug=board.slug, id=t.id) }}">{{ t.name }}</a>
-    {% endfor %}
-    </ul>
-{% endif %}
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Length</th>
+        <th>Last updated</th>
+    </tr>
+    {% for t in threads %}{{ thread_row(t) }}{% endfor %}
+</table>
 {% endblock %}

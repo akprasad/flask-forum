@@ -69,7 +69,8 @@ class Board(Base):
 
 
 class Thread(Base, TimestampMixin):
-    name = db.Column(db.String)
+    name = db.Column(db.String(80))
+    last_updated = db.Column(db.DateTime, default=datetime.utcnow)
     author_id = db.Column(db.ForeignKey('user.id'), index=True)
     board_id = db.Column(db.ForeignKey('board.id'), index=True)
 
@@ -81,6 +82,10 @@ class Thread(Base, TimestampMixin):
 
     def __unicode__(self):
         return self.name
+
+    @property
+    def num_posts(self):
+        return Post.query.filter(Post.thread_id == self.id).count()
 
 
 class Post(Base, TimestampMixin):
