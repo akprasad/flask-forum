@@ -1,0 +1,31 @@
+body {
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+#threads {
+    margin: 0 10%;
+    width: 80%;
+
+    // Make thread titles easier to click
+    a {
+        display: block;
+        padding: 0.3em;
+
+        &:hover {
+            background: #eee;
+        }
+    }
+
+    // Align th with td
+    th {
+        text-align: left;
+    }
+}
+
+article.post {
+    // Make posts visually distinct
+    background: #eee;
+    margin: 0 0 1em;
+    padding: 0.25em 1em;
+}

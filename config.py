@@ -1,6 +1,10 @@
 DEBUG = True
 SECRET_KEY = 'secret'
 
+# flask-assets
+# ------------
+ASSETS_DEST = 'application/static'
+
 # flask-security
 # --------------
 SECURITY_PASSWORD_HASH = 'bcrypt'

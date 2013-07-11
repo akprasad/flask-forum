@@ -17,7 +17,7 @@
 <h1>{{ board.name }}</h1>
 
 <a href="{{ url_for('.create_thread', slug=board.slug) }}">Create thread</a>
-<table>
+<table id="threads">
     <tr>
         <th>Subject</th>
         <th>Posts</th>

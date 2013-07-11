@@ -1,4 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block title %}flask-forum{% endblock %}
+
+{% block body %}
 <h1>flask-forum</h1>
 
 <a href="{{ url_for('admin.index') }}">Admin panel</a>
 <a href="{{ url_for('forum.index') }}">Forum index</a>
+{% endblock %}

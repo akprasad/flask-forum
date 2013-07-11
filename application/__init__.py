@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask.ext.assets import Bundle, Environment
 from flask.ext.markdown import Markdown
 from flask.ext.security import Security, SQLAlchemyUserDatastore
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -6,6 +7,15 @@ from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config.from_object('config')
+
+
+# Assets
+assets = Environment(app)
+assets.url = '/static'
+assets.directory = app.config['ASSETS_DEST']
+
+less = Bundle('less/style.less', filters='less', output='gen/style.css')
+assets.register('all-css', less)
 
 
 # Database

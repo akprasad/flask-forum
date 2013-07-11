@@ -1,8 +1,11 @@
 # flask-forum
 
-A forum app made with multiple Flask extensions:
+A forum app made with multiple Flask extensions.
+
+## Extensions used
 
 - [Flask-Admin](http://flask-admin.readthedocs.org/en/latest/) for database management
+- [Flask-Assets](http://elsdoerfer.name/docs/flask-assets/) for asset management
 - [Flask-Markdown](http://pythonhosted.org/Flask-Markdown/) for forum posts
 - [Flask-Security](http://pythonhosted.org/Flask-Security/) for authentication
 - [Flask-SQLAlchemy](http://pythonhosted.org/Flask-SQLAlchemy/) for database queries

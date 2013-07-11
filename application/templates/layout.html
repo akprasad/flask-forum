@@ -1,0 +1,12 @@
+<html>
+    <head>
+        {% block head %}
+        <title>{% block title %}{% endblock %}</title>
+        {% assets "all-css" %}<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">{% endassets %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

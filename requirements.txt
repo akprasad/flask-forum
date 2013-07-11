@@ -1,5 +1,6 @@
 flask
 flask-admin
+flask-assets
 flask-markdown
 flask-security
 flask-sqlalchemy
