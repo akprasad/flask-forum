@@ -36,5 +36,6 @@ def thread(slug, id, title=None):
     except sql_exc:
         return redirect(url_for('.board', slug=slug))
 
+    posts = thread.posts
     return render_template('forum/thread.html', board=board,
                            thread=thread, posts=posts)

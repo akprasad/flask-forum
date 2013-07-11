@@ -12,6 +12,10 @@ db = SQLAlchemy(app)
 import models
 
 
+# Admin
+import admin
+
+
 # Security
 datastore = SQLAlchemyUserDatastore(db, models.User, models.Role)
 security = Security(app, datastore)
