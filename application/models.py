@@ -16,6 +16,15 @@ class Base(db.Model):
         return cls.__name__.lower()
 
 
+class TimestampMixin(object):
+
+    created = db.Column(db.DateTime, default=datetime.utcnow)
+
+    @property
+    def readable_date(self):
+        return self.created.strftime('%H:%M on %-d %B %Y')
+
+
 # Authentication
 # ~~~~~~~~~~~~~~
 class UserRoleAssoc(db.Model):
@@ -59,9 +68,8 @@ class Board(Base):
         return self.name
 
 
-class Thread(Base):
+class Thread(Base, TimestampMixin):
     name = db.Column(db.String)
-    created = db.Column(db.DateTime, default=datetime.utcnow)
     author_id = db.Column(db.ForeignKey('user.id'), index=True)
     board_id = db.Column(db.ForeignKey('board.id'), index=True)
 
@@ -75,10 +83,9 @@ class Thread(Base):
         return self.name
 
 
-class Post(Base):
+class Post(Base, TimestampMixin):
     index = db.Column(db.Integer, default=0, index=True)
     content = db.Column(db.Text)
-    created = db.Column(db.DateTime, default=datetime.utcnow)
     author_id = db.Column(db.ForeignKey('user.id'), index=True)
     thread_id = db.Column(db.ForeignKey('thread.id'), index=True)
 
