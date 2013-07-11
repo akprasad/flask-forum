@@ -20,9 +20,8 @@ class TimestampMixin(object):
 
     created = db.Column(db.DateTime, default=datetime.utcnow)
 
-    @property
-    def readable_date(self):
-        return self.created.strftime('%H:%M on %-d %B %Y')
+    def readable_date(self, date):
+        return date.strftime('%H:%M on %-d %B %Y')
 
 
 # Authentication

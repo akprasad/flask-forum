@@ -1,8 +1,10 @@
 {% extends 'forum/layout.html' %}
+{% import 'forum/macros.html' as m %}
 
 {% block title %}Forum{% endblock %}
 
 {% block body %}
+{{ m.breadcrumbs(board) }}
 <h1>Forum</h1>
 
 {% for b in boards %}

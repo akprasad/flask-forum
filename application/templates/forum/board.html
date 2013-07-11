@@ -1,24 +1,26 @@
 {% extends 'forum/layout.html' %}
+{% import 'forum/macros.html' as m %}
 
 {# #}
 {% macro thread_row(t) %}
     <tr>
         <td><a href="{{ url_for('.thread', slug=board.slug, id=t.id) }}">{{ t.name }}</a></td>
         <td>{{ t.num_posts }}</td>
-        <td>{{ t.readable_date }}</td>
+        <td>{{ t.readable_date(t.last_updated) }}</td>
     </tr>
 {% endmacro %}
 
 {% block title %}{{ board.name }}{% endblock %}
 
 {% block body %}
+{{ m.breadcrumbs(board) }}
 <h1>{{ board.name }}</h1>
 
 <a href="{{ url_for('.create_thread', slug=board.slug) }}">Create thread</a>
 <table>
     <tr>
-        <th>Title</th>
-        <th>Length</th>
+        <th>Subject</th>
+        <th>Posts</th>
         <th>Last updated</th>
     </tr>
     {% for t in threads %}{{ thread_row(t) }}{% endfor %}

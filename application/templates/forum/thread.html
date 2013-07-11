@@ -1,8 +1,10 @@
 {% extends 'forum/layout.html' %}
+{% import 'forum/macros.html' as m %}
 
 {% block title %}{{ thread.name }}{% endblock %}
 
 {% block body %}
+{{ m.breadcrumbs(board, thread) }}
 <h1>{{ thread.name }}</h1>
 
 <a href="{{ url_for('.create_post', slug=board.slug, id=thread.id) }}">Add post</a>
