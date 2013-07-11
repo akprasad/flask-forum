@@ -36,6 +36,9 @@ class User(Base, UserMixin):
     def __repr__(self):
         return '<User(%s, %s)>' % (self.id, self.email)
 
+    def __unicode__(self):
+        return self.email
+
 
 class Role(Base, RoleMixin):
     name = db.Column(db.String)
@@ -52,6 +55,9 @@ class Board(Base):
     slug = db.Column(db.String, unique=True)
     description = db.Column(db.String)
 
+    def __unicode__(self):
+        return self.name
+
 
 class Thread(Base):
     name = db.Column(db.String)
@@ -65,6 +71,9 @@ class Thread(Base):
                             order_by='Post.index',
                             collection_class=ordering_list('index'))
 
+    def __unicode__(self):
+        return self.name
+
 
 class Post(Base):
     index = db.Column(db.Integer, default=0, index=True)
@@ -74,3 +83,6 @@ class Post(Base):
     thread_id = db.Column(db.ForeignKey('thread.id'), index=True)
 
     author = db.relationship('User', backref='posts')
+
+    def __repr__(self):
+        return '<Post(%s)>' % self.id

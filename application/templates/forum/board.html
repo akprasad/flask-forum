@@ -1,3 +1,8 @@
+{% extends 'forum/layout.html' %}
+
+{% block title %}{{ board.name }}{% endblock %}
+
+{% block body %}
 <h1>{{ board.name }}</h1>
 
 <a href="{{ url_for('.create_thread', slug=board.slug) }}">Create thread</a>
@@ -8,3 +13,4 @@
     {% endfor %}
     </ul>
 {% endif %}
+{% endblock %}
