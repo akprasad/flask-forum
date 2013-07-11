@@ -1,1 +1,6 @@
 <h1>Forum</h1>
+
+{% for b in boards %}
+    <h2><a href="{{ url_for('.board', slug=b.slug) }}">{{ b.name }}</a></h2>
+    <p>{{ b.description }}</p>
+{% endfor %}

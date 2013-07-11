@@ -16,6 +16,8 @@ class Base(db.Model):
         return cls.__name__.lower()
 
 
+# Authentication
+# ~~~~~~~~~~~~~~
 class UserRoleAssoc(db.Model):
     __tablename__ = 'user_role_assoc'
     user_id = db.Column(db.ForeignKey('user.id'), primary_key=True)
@@ -43,8 +45,11 @@ class Role(Base, RoleMixin):
         return '<Role(%s, %s)>' % (self.id, self.name)
 
 
+# Forum
+# ~~~~~
 class Board(Base):
     name = db.Column(db.String)
+    slug = db.Column(db.String, unique=True)
     description = db.Column(db.String)
 
 
