@@ -7,7 +7,14 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 
+# Database
 db = SQLAlchemy(app)
+import models
+
+
+# Security
+datastore = SQLAlchemyUserDatastore(db, models.User, models.Role)
+security = Security(app, datastore)
 
 
 # Endpoints
@@ -18,8 +25,3 @@ def index():
 
 import forum.views as forum
 app.register_blueprint(forum.bp, url_prefix='/forum')
-
-
-if __name__ == '__main__':
-    db.create_all()
-    app.run()
