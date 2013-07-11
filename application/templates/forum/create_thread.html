@@ -1,0 +1,8 @@
+<h1>{{ board.name }}</h1>
+
+<form method="POST" action="">
+    {{ form.csrf_token }}
+    {{ form.name }}
+    {{ form.content }}
+    {{ form.submit }}
+</form>

@@ -56,9 +56,11 @@ class Board(Base):
 class Thread(Base):
     name = db.Column(db.String)
     created = db.Column(db.DateTime, default=datetime.utcnow)
-    board_id = db.Column(db.ForeignKey('board.id'), index=True)
     author_id = db.Column(db.ForeignKey('user.id'), index=True)
+    board_id = db.Column(db.ForeignKey('board.id'), index=True)
 
+    author = db.relationship('User', backref='threads')
+    board = db.relationship('Board', backref='threads')
     posts = db.relationship('Post', backref='thread',
                             order_by='Post.index',
                             collection_class=ordering_list('index'))
@@ -68,7 +70,7 @@ class Post(Base):
     index = db.Column(db.Integer, default=0, index=True)
     content = db.Column(db.Text)
     created = db.Column(db.DateTime, default=datetime.utcnow)
-    thread_id = db.Column(db.ForeignKey('thread.id'), index=True)
     author_id = db.Column(db.ForeignKey('user.id'), index=True)
+    thread_id = db.Column(db.ForeignKey('thread.id'), index=True)
 
     author = db.relationship('User', backref='posts')

@@ -1,5 +1,10 @@
 <h1>{{ board.name }}</h1>
 
-{% for t in threads %}
-
-{% endfor %}
+<a href="{{ url_for('.create_thread', slug=board.slug) }}">Create thread</a>
+{% if threads %}
+    <ul>
+    {% for t in threads %}
+        <li><a href="{{ url_for('.thread', slug=board.slug, id=t.id) }}">{{ t.name }}</a>
+    {% endfor %}
+    </ul>
+{% endif %}

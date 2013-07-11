@@ -1,5 +1,9 @@
-<h1>Thread</h1>
+<h1>{{ thread.name }}</h1>
+
+<a href="{{ url_for('.create_post', slug=board.slug, id=thread.id) }}">Add post</a>
 
 {% for p in posts %}
-
+<article>
+    {{ p.content }}
+</article>
 {% endfor %}
