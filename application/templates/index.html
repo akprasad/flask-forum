@@ -18,9 +18,9 @@
 <h2><a href="{{ url_for('admin.index') }}">Admin stuff</a></h2>
 {% if auth %}
     {% if u.has_role('admin') %}
-        You have admin privileges.
+        <p>The account you're using (<code>{{ u.email }}</code>) has admin privileges. Why not <a href="{{ url_for('admin.index') }}">check out the admin panel</a>?</p>
     {% else %}
-        <p>The account you're using (<code>{{ u.email }}</code>) does not have admin privileges. You can give yourself admin privileges by running the following command on the terminal:</p>
+        <p>The account you're using (<code>{{ u.email }}</code>) does not have admin privileges. You can give yourself admin privileges by running the following commands on the terminal:</p>
 
         <pre>
         python manage.py create_role -n admin
