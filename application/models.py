@@ -21,7 +21,7 @@ class TimestampMixin(object):
     created = db.Column(db.DateTime, default=datetime.utcnow)
     updated = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def readable_date(self, date, format='%H:%M on %-d %B %Y'):
+    def readable_date(self, date, format='%H:%M on %-d %B'):
         return date.strftime(format)
 
 

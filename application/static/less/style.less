@@ -1,6 +1,9 @@
 body {
     font-family: sans-serif;
     font-size: 14px;
+    max-width: 960px;
+    margin: 1em auto;
+    padding: 0 20px;
 }
 
 code {
@@ -30,9 +33,14 @@ textarea {
     height: 20em;
 }
 
+div.breadcrumbs {
+    background: #eee;
+    padding: 1em;
+}
+
 #threads {
-    margin: 0 10%;
-    width: 80%;
+
+    width: 100%;
 
     // Make thread titles easier to click
     a {
@@ -40,19 +48,34 @@ textarea {
         padding: 0.3em;
 
         &:hover {
-            background: #eee;
+            background: #06f;
+            color: #fff;
         }
     }
 
     // Align th with td
     th {
         text-align: left;
+        width: 60%;
+
+        & + th {
+            width: 20%;
+        }
+    }
+
+    tr:nth-child(even) {
+        background: #f5f5f5;
     }
 }
 
 article.post {
     // Make posts visually distinct
-    background: #eee;
     margin: 0 0 1em;
     padding: 0.25em 1em;
+
+    &:nth-child(even) {
+        background: #f5f5f5;
+        border: 1px #eee solid;
+        border-width: 1px 0;
+    }
 }
