@@ -64,6 +64,8 @@ class Board(Base):
     slug = db.Column(db.String, unique=True)
     description = db.Column(db.String)
 
+    threads = db.relationship('Thread', cascade='all,delete')
+
     def __unicode__(self):
         return self.name
 
@@ -74,8 +76,8 @@ class Thread(Base, TimestampMixin):
     board_id = db.Column(db.ForeignKey('board.id'), index=True)
 
     author = db.relationship('User', backref='threads')
-    board = db.relationship('Board', backref='threads')
     posts = db.relationship('Post', backref='thread',
+                            cascade='all,delete',
                             order_by='Post.index',
                             collection_class=ordering_list('index'))
 

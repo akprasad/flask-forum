@@ -24,7 +24,8 @@ def board(slug):
     except sql_exc:
         return redirect(url_for('.index'))
 
-    threads = Thread.query.all()
+    threads = Thread.query.filter(Thread.board_id == board.id) \
+                    .order_by(Thread.created.desc()).all()
     return render_template('forum/board.html', board=board,
                            threads=threads)
 
