@@ -1,0 +1,10 @@
+{% extends 'forum/layout.html' %}
+{% import 'forum/macros.html' as m %}
+
+{% block title %}{{ user.email }}{% endblock %}
+
+{% block body %}
+{{ m.breadcrumbs() }}
+<h1>{{ user.email }}</h1>
+
+{% endblock %}

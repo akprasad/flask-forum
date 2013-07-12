@@ -3,7 +3,7 @@ from flask import Blueprint, redirect, render_template, url_for
 from flask.ext.security import current_user, login_required
 
 from application import db
-from application.models import Board, Thread, Post
+from application.models import Board, Thread, Post, User
 import forms
 
 GET_POST = ['GET', 'POST']
@@ -45,6 +45,15 @@ def thread(slug, id, title=None):
     posts = thread.posts
     return render_template('forum/thread.html', board=board,
                            thread=thread, posts=posts)
+
+
+@bp.route('/users/<int:id>')
+def user(id):
+    try:
+        user = User.query.filter(User.id == id).one()
+    except sql_exc:
+        return redirect(url_for('.index'))
+    return render_template('forum/user.html', user=user)
 
 
 @bp.route('/<slug>/create/', methods=GET_POST)
