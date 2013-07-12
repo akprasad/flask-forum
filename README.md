@@ -1,6 +1,15 @@
 # flask-forum
 
-A forum app made with multiple Flask extensions.
+A forum app with some basic forum stuff:
+
+- Authentication and session management
+- Boards, threads, and posts
+- Markdown support for posts
+
+Most of the forum code is contained in its own folder, and it's pretty easy to
+move it to other projects and use it as a blueprint or whatever else you have
+in mind. If you're new to Flask, this project is also a pretty good illustration
+of how to use a variety of common and especially useful extensions.
 
 ## Extensions used
 
