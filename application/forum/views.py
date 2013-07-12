@@ -91,10 +91,43 @@ def create_post(slug, id):
                  author=current_user)
         thread.posts.append(p)
         db.session.flush()
-        thread.last_updated = p.created
+        thread.updated = p.created
         db.session.commit()
 
         return redirect(url_for('.thread', slug=slug, id=id))
+
+    return render_template('forum/create_post.html',
+                           board=board,
+                           thread=thread,
+                           form=form)
+
+
+@bp.route('/<slug>/<int:thread_id>/<int:post_id>/edit', methods=GET_POST)
+@login_required
+def edit_post(slug, thread_id, post_id):
+    try:
+        board = Board.query.filter(Board.slug == slug).one()
+    except sql_exc:
+        return redirect(url_for('.index'))
+    try:
+        thread = Thread.query.filter(Thread.id == thread_id).one()
+    except sql_exc:
+        return redirect(url_for('.board', slug=slug))
+    try:
+        post = Post.query.filter(Post.id == post_id).one()
+    except sql_exc:
+        return redirect(url_for('.thread', slug=slug, id=thread_id))
+
+    if post.author_id != current_user.id:
+        return redirect(url_for('.thread', slug=slug, id=thread_id))
+
+    form = forms.EditPostForm()
+    if form.validate_on_submit():
+        post.content = form.content.data
+        db.session.commit()
+        return redirect(url_for('.thread', slug=slug, id=thread_id))
+    else:
+        form.content.data = post.content
 
     return render_template('forum/create_post.html',
                            board=board,

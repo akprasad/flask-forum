@@ -3,8 +3,8 @@
 A forum app with some basic forum stuff:
 
 - Authentication and session management
-- Boards, threads, and posts
-- Markdown support for posts
+- Create boards, threads, and posts
+- Write and edit posts in Markdown
 
 Most of the forum code is contained in its own folder, and it's pretty easy to
 move it to other projects and use it as a blueprint or whatever else you have
@@ -29,3 +29,5 @@ python manage.py create_role -n admin
 python manage.py add_role -u <email> -r admin
 python runserver.py
 ```
+
+Then open up a browser and go to `localhost:5000`.

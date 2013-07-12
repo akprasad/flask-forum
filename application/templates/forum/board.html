@@ -6,7 +6,7 @@
     <tr>
         <td><a href="{{ url_for('.thread', slug=board.slug, id=t.id) }}">{{ t.name }}</a></td>
         <td>{{ t.num_posts }}</td>
-        <td>{{ t.readable_date(t.last_updated) }}</td>
+        <td>{{ t.readable_date(t.updated) }}</td>
     </tr>
 {% endmacro %}
 
@@ -16,7 +16,7 @@
 {{ m.breadcrumbs(board) }}
 <h1>{{ board.name }}</h1>
 
-<a href="{{ url_for('.create_thread', slug=board.slug) }}">Create thread</a>
+<a href="{{ url_for('.create_thread', slug=board.slug) }}">New thread</a>
 <table id="threads">
     <tr>
         <th>Subject</th>

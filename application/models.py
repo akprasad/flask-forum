@@ -19,9 +19,10 @@ class Base(db.Model):
 class TimestampMixin(object):
 
     created = db.Column(db.DateTime, default=datetime.utcnow)
+    updated = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def readable_date(self, date):
-        return date.strftime('%H:%M on %-d %B %Y')
+    def readable_date(self, date, format='%H:%M on %-d %B %Y'):
+        return date.strftime(format)
 
 
 # Authentication
@@ -69,7 +70,6 @@ class Board(Base):
 
 class Thread(Base, TimestampMixin):
     name = db.Column(db.String(80))
-    last_updated = db.Column(db.DateTime, default=datetime.utcnow)
     author_id = db.Column(db.ForeignKey('user.id'), index=True)
     board_id = db.Column(db.ForeignKey('board.id'), index=True)
 

@@ -7,11 +7,13 @@
 {{ m.breadcrumbs(board, thread) }}
 <h1>{{ thread.name }}</h1>
 
-<a href="{{ url_for('.create_post', slug=board.slug, id=thread.id) }}">Add post</a>
+<a href="{{ url_for('.create_post', slug=board.slug, id=thread.id) }}">New post</a>
 
 {% for p in posts %}
 <article class="post">
+    {{ p.readable_date(p.created) }}
     {{ p.content|markdown }}
+    {% if p.author_id == current_user.id %}<a href="{{ url_for('.edit_post', slug=board.slug, thread_id=thread.id, post_id=p.id) }}">[edit]</a>{% endif %}
 </article>
 {% endfor %}
 {% endblock %}

@@ -12,3 +12,7 @@ class CreateThreadForm(Form):
 class CreatePostForm(Form):
     content = TextAreaField(validators=[Required()])
     submit = SubmitField()
+
+
+class EditPostForm(CreatePostForm):
+    pass
