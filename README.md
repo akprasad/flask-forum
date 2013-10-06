@@ -15,19 +15,36 @@ of how to use a variety of common and especially useful extensions.
 
 - [Flask-Admin](http://flask-admin.readthedocs.org/en/latest/) for database management
 - [Flask-Assets](http://elsdoerfer.name/docs/flask-assets/) for asset management
+- [Flask-DebugToolbar](http://flask-debugtoolbar.readthedocs.org/) for debugging and profiling.
 - [Flask-Markdown](http://pythonhosted.org/Flask-Markdown/) for forum posts
+- [Flask-Script](http://pythonhosted.org/Flask-Security/) for basic commands
 - [Flask-Security](http://pythonhosted.org/Flask-Security/) for authentication
 - [Flask-SQLAlchemy](http://pythonhosted.org/Flask-SQLAlchemy/) for database queries
 - [Flask-WTF](http://pythonhosted.org/Flask-WTF/) for forms
 
 ## Setup
 
+[bcrypt]
+
+flask-forum uses [bcrypt](https://github.com/dstufft/bcrypt/) for password hashing.
+If you're using Ubuntu, you can install it with the necessary headers by running
+the following commands:
+
+```
+sudo apt-get install python-dev libffi-dev
+sudo pip install bcrypt
+```
+
+The rest of the setup is more conventional:
+
 ```
 pip install -r requirements.txt
+python manage.py create_db
 python manage.py create_user -e <email> -p <password>
 python manage.py create_role -n admin
 python manage.py add_role -u <email> -r admin
 python runserver.py
 ```
 
-Then open up a browser and go to `localhost:5000`.
+By default the site is hosted at `localhost:5000`.
+

@@ -1,7 +1,9 @@
 flask
 flask-admin
 flask-assets
+flask-debugtoolbar
 flask-markdown
+flask-script
 flask-security
 flask-sqlalchemy
 flask-wtf

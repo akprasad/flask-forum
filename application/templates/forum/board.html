@@ -5,7 +5,7 @@
 {% macro thread_row(t) %}
     <tr>
         <td><a href="{{ url_for('.thread', slug=board.slug, id=t.id) }}">{{ t.name }}</a></td>
-        <td>{{ t.num_posts }}</td>
+        <td>{{ t.length }}</td>
         <td>{{ t.readable_date(t.updated) }}</td>
     </tr>
 {% endmacro %}

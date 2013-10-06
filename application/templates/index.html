@@ -8,11 +8,16 @@
 
 {% block body %}
 <h1>flask-forum</h1>
-
+{% if auth %}(logged in as <i>{{ u.email }}</i>){% endif %}
 
 <h2>Authentication [<a href="{{ url_for('security.login') }}">log in</a>, <a href="{{ url_for('security.logout') }}">log out</a>, <a href="{{ url_for('security.register') }}">register</a>]</h2>
-{% if auth %}(logged in as <i>{{ u.email }}</i>){% endif %}
-<p>Powered by Flask-Security. Flask-Security automatically creates several endpoints, including <code>security.login</code> (<code>/login</code>), <code>security.logout</code> (<code>/logout</code>), and <code>security.register</code> (<code>/register</code>).</p>
+<p>Powered by Flask-Security. Flask-Security automatically creates several endpoints, including:</p>
+
+<ul>
+    <li><code>security.login</code> (<code>/login</code>)</li>
+    <li><code>security.logout</code> (<code>/logout</code>)</li>
+    <li><code>security.register</code> (<code>/register</code>)</li>
+</ul>
 
 
 <h2><a href="{{ url_for('admin.index') }}">Admin stuff</a></h2>
@@ -28,12 +33,12 @@
         </pre>
     {% endif %}
 {% else %}
-    <a href="{{ url_for('security.login') }}">Log in</a> to access the admin panel.
+    <p><a href="{{ url_for('security.login') }}">Log in</a> to access the admin panel.</p>
 {% endif %}
 
 
 <h2><a href="{{ url_for('forum.index') }}">The forum</a></h2>
 
-<p>A basic forum. There are multiple <dfn>boards</dfn>, each board has multiple <dfn>threads</dfn>, and each thread has multiple <dfn>posts</dfn>. Users can create threads and posts, but only administrators can create boards. You can do this through the admin panel.</p>
+<p>A basic forum. There are multiple <dfn>boards</dfn>, each board has multiple <dfn>threads</dfn>, and each thread has multiple <dfn>posts</dfn>. Users can create threads and posts, but only administrators can create boards. You can create a new board by using the <a href="{{ url_for('boardview.create_view') }}">admin panel</a>.</p>
 
 {% endblock %}

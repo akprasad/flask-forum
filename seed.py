@@ -21,6 +21,10 @@ NUM_POSTS = 20
 def main():
     users = User.query.all()
 
+    Board.query.delete()
+    Thread.query.delete()
+    Post.query.delete()
+
     for b in range(NUM_BOARDS):
         board = Board(
             name='Board %s' % b,

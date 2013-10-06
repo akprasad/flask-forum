@@ -31,6 +31,12 @@ import admin
 Markdown(app, safe_mode='escape')
 
 
+# Debug toolbar
+if app.config['DEBUG']:
+    from flask.ext.debugtoolbar import DebugToolbarExtension as DTE
+    toolbar = DTE(app)
+
+
 # Security
 datastore = SQLAlchemyUserDatastore(db, models.User, models.Role)
 security = Security(app, datastore)
