@@ -1,4 +1,4 @@
-from flask import redirect
+from flask import abort
 from flask.ext.admin import (Admin, BaseView as _BaseView,
                             AdminIndexView as _AdminIndexView,
                              expose)
@@ -26,7 +26,7 @@ class AdminIndexView(_AdminIndexView):
         if current_user.has_role('admin'):
             return self.render(self._template)
         else:
-            return redirect('/')
+            abort(404)
 
 
 class BaseView(AuthMixin, _BaseView):
