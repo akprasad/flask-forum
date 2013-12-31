@@ -17,14 +17,12 @@ of how to use a variety of common and especially useful extensions.
 - [Flask-Assets](http://elsdoerfer.name/docs/flask-assets/) for asset management
 - [Flask-DebugToolbar](http://flask-debugtoolbar.readthedocs.org/) for debugging and profiling.
 - [Flask-Markdown](http://pythonhosted.org/Flask-Markdown/) for forum posts
-- [Flask-Script](http://pythonhosted.org/Flask-Security/) for basic commands
+- [Flask-Script](http://flask-script.readthedocs.org/en/latest/) for basic commands
 - [Flask-Security](http://pythonhosted.org/Flask-Security/) for authentication
 - [Flask-SQLAlchemy](http://pythonhosted.org/Flask-SQLAlchemy/) for database queries
 - [Flask-WTF](http://pythonhosted.org/Flask-WTF/) for forms
 
 ## Setup
-
-[bcrypt]
 
 flask-forum uses [bcrypt](https://github.com/dstufft/bcrypt/) for password hashing.
 If you're using Ubuntu, you can install it with the necessary headers by running
