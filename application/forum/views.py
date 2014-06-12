@@ -14,7 +14,7 @@ bp = Blueprint('forum', __name__)
 @bp.route('/')
 def index():
     boards = Board.query.all()
-    return render_template('forum/index.html', boards=boards)
+    return render_template('index.html', boards=boards)
 
 
 @bp.route('/<slug>/')
