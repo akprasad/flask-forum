@@ -1,3 +1,7 @@
+*(Note: I made this project as an experiment 7 years ago while I was learning Flask.
+The code is entirely "as-is," and I don't intend to offer any support for it. Even
+so, I hope you find it useful.)*
+
 # flask-forum
 
 A forum app with some basic forum stuff:
