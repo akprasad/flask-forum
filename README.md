@@ -2,6 +2,8 @@
 The code is entirely "as-is," and I don't intend to offer any support for it. Even
 so, I hope you find it useful.)*
 
+License: MIT
+
 # flask-forum
 
 A forum app with some basic forum stuff:
